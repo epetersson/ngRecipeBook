@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -25,7 +26,9 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
     DropdownDirective
   ],
   imports: [
-    BrowserModule, FormsModule
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
