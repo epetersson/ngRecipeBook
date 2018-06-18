@@ -1,7 +1,7 @@
 import { RecipeService } from './../recipe.service';
 import { Recipe } from '../recipe.model';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -13,7 +13,8 @@ export class RecipeDetailComponent implements OnInit {
   id: number;
 
   constructor(private recipeService: RecipeService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     // Subscribes to changes in the parameters of this URL
@@ -28,6 +29,12 @@ export class RecipeDetailComponent implements OnInit {
 
   onAddIngredientsToShoppingList() {
     this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
+  }
+
+  onEditRecipe() {
+    // Works perfectly as the current relative route is recipe/id
+    // and we just add edit on top of it
+    this.router.navigate(['edit'], {relativeTo: this.route});
   }
 
 }
