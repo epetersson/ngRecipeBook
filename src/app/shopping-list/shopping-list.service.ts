@@ -18,7 +18,15 @@ export class ShoppingListService {
 
     addIngredient(ingredient: Ingredient) {
         this.ingredients.push(ingredient);
-        // Emit a new copy of the ingredients array after adding
+        // Emit a new copy of the ingredients array after adding ingredient
+        this.ingredientsChanged.emit(this.ingredients.slice());
+    }
+
+    addIngredients(ingredients: Ingredient[]) {
+        // ... is a spread operator that pushes all of the elements in
+        // the ingredients array
+        this.ingredients.push(...ingredients);
+        // Emit a new copy of the ingredients array after adding ingredient
         this.ingredientsChanged.emit(this.ingredients.slice());
     }
 }
