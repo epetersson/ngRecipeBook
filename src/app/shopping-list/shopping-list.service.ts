@@ -1,11 +1,10 @@
 import { Ingredient } from '../shared/ingredient.model';
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class ShoppingListService {
-    // Since we only provide a copy of the ingredients object
-    // we need to emit when new ingredient is added
-    ingredientsChanged = new EventEmitter<Ingredient[]>();
+    ingredientsChanged = new Subject<Ingredient[]>();
     private ingredients: Ingredient[] = [
         new Ingredient('Apples', 5),
         new Ingredient('Tomatoes', 10)
@@ -18,15 +17,15 @@ export class ShoppingListService {
 
     addIngredient(ingredient: Ingredient) {
         this.ingredients.push(ingredient);
-        // Emit a new copy of the ingredients array after adding ingredient
-        this.ingredientsChanged.emit(this.ingredients.slice());
+        // Next a new copy of the ingredients array to the Subject after adding ingredient
+        this.ingredientsChanged.next(this.ingredients.slice());
     }
 
     addIngredients(ingredients: Ingredient[]) {
         // ... is a spread operator that pushes all of the elements in
         // the ingredients array
         this.ingredients.push(...ingredients);
-        // Emit a new copy of the ingredients array after adding ingredient
-        this.ingredientsChanged.emit(this.ingredients.slice());
+        // Next a new copy of the ingredients array to the Subject after adding ingredient
+        this.ingredientsChanged.next(this.ingredients.slice());
     }
 }
