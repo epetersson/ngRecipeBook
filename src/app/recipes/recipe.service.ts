@@ -26,6 +26,16 @@ export class RecipeService {
                 new Ingredient('Bacon', 25),
                 new Ingredient('Chicken Filét', 5)
             ]
+        ),
+        new Recipe(
+            'Flying Jacob',
+            'Delicious flying jacob with tender chicken, hot chili sauce and sweet bananas',
+            'https://img.koket.se/media/flygande-jakob.jpg',
+            [
+                new Ingredient('Banana', 3),
+                new Ingredient('Chicken Filét', 10),
+                new Ingredient('Chili Sauce', 2)
+            ]
         )
     ];
 
