@@ -12,9 +12,7 @@ import { AuthGuard } from './auth/auth-guard.service';
 
 // Constant containing all of the routes for the application
 const appRoutes: Routes = [
-    { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-    { path: 'signup' , component: SignupComponent },
-    { path: 'signin' , component: SigninComponent }
+    { path: '', redirectTo: '/recipes', pathMatch: 'full' }
 ];
 
 // Module used for routing
