@@ -1,3 +1,4 @@
+import { SharedModule } from '../shared/shared.module';
 import { DropdownDirective } from '../shared/dropdown.directive';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
@@ -22,7 +23,8 @@ import { RecipesRoutingModule } from './recipes-routing.module';
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        RecipesRoutingModule
+        RecipesRoutingModule,
+        SharedModule
     ]
 })
 export class RecipesModule {}
