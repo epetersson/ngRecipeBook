@@ -17,5 +17,4 @@ import { SignupComponent } from './signup/signup.component';
         FormsModule
     ]
 })
-
 export class AuthModule {}
