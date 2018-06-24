@@ -6,7 +6,8 @@ import { HomeComponent } from './home/home.component';
 
 // Constant containing all of the routes for the application
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent }
+    { path: '', component: HomeComponent },
+    { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule'}
 ];
 
 // Module used for routing

@@ -8,7 +8,6 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { RecipesModule } from './recipes/recipes.module';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    RecipesModule,
     ShoppingListModule,
     SharedModule,
     AuthModule
