@@ -1,3 +1,4 @@
+import { LoggingInterceptor } from './../shared/logging.interceptor';
 import { AuthInterceptor } from './../shared/auth.interceptor';
 import { AppRoutingModule } from './../app-routing.module';
 import { SharedModule } from './../shared/shared.module';
@@ -22,7 +23,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
         HeaderComponent
     ],
     providers: [
-        {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+        {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+        {provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true}
     ]
 })
 export class CoreModule {}
