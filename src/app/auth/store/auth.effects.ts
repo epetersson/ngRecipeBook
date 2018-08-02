@@ -73,8 +73,7 @@ export class AuthEffects {
         .do(() => {
             this.router.navigate(['/']);
         });
-    constructor(private actions$: Actions, private router: Router) {
-        
-    }
+
+    constructor(private actions$: Actions, private router: Router) {}
 
 }
