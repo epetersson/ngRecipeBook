@@ -1,7 +1,7 @@
-import { LoggingInterceptor } from './../shared/logging.interceptor';
-import { AuthInterceptor } from './../shared/auth.interceptor';
-import { AppRoutingModule } from './../app-routing.module';
-import { SharedModule } from './../shared/shared.module';
+import { LoggingInterceptor } from '../shared/logging.interceptor';
+import { AuthInterceptor } from '../shared/auth.interceptor';
+import { AppRoutingModule } from '../app-routing.module';
+import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { NgModule } from '@angular/core';
