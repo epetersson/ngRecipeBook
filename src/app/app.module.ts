@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 
 import { reducers } from './store/app.reducers';
+import { AuthEffects } from './auth/store/auth.effects';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { reducers } from './store/app.reducers';
     AuthModule,
     CoreModule,
     HttpClientModule,
-    StoreModule.forRoot(reducers)
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([AuthEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

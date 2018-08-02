@@ -1,4 +1,6 @@
-import { AuthService } from '../auth.service';
+import * as AuthActions  from './../store/auth.actions';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../../store/app.reducers';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
@@ -10,7 +12,7 @@ import { NgForm } from '@angular/forms';
 export class SignupComponent implements OnInit {
   @ViewChild('signUpForm') signUpForm: NgForm;
 
-  constructor(private authService: AuthService) { }
+  constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
   }
@@ -18,8 +20,9 @@ export class SignupComponent implements OnInit {
   onSignUp() {
     const email = this.signUpForm.value.email;
     const password = this.signUpForm.value.password;
-
-    this.authService.signUpUser(email, password);
+    
+    // Dispatching the emal and password to the trysignup action
+    this.store.dispatch(new AuthActions.TrySignUpUser({email: email, password: password}));
   }
 
 }
