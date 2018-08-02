@@ -13,9 +13,14 @@ export function shoppingListReducer(state = initialState, action: ShoppingListAc
     switch(action.type) {
         case ShoppingListActions.ADD_INGREDIENT:
             return {
-                // ... is a spread operator. Basically it takes all of the attributes of the object and adds it to the new one
+                // ... is a spread operator. Basically it takes all of the properties of the object and but allows you to override properties
                 ...state, 
                 ingredients: [...state.ingredients, action.payload]
+            }
+        case ShoppingListActions.ADD_INGREDIENTS:
+            return {
+                ...state,
+                ingredients: [...state.ingredients, ...action.payload]
             }
         default:
             return state;    

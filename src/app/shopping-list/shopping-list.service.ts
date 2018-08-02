@@ -11,20 +11,9 @@ export class ShoppingListService {
         new Ingredient('Apples', 5),
         new Ingredient('Tomatoes', 10)
       ];
-
-    getIngredients() {
-        // Slice to return only a copy of ingredients, not the array itself
-        return this.ingredients.slice();
-    }
-
+      
     getIngredient(index: number) {
         return this.ingredients[index];
-    }
-
-    addIngredient(ingredient: Ingredient) {
-        this.ingredients.push(ingredient);
-        // Next a new copy of the ingredients array to the Subject after adding ingredient
-        this.ingredientsChanged.next(this.ingredients.slice());
     }
 
     addIngredients(ingredients: Ingredient[]) {
