@@ -13,27 +13,19 @@ export class DataStorageService {
                 private authService: AuthService) {}
 
     storeRecipes() {
-        const token = this.authService.getToken();
         /* return this.httpService.put(
-            'https://ng-recipe-book-55fbc.firebaseio.com/recipes.json?auth=' + token,
+            'https://ng-recipe-book-55fbc.firebaseio.com/recipes.json,
             this.recipeService.getRecipes()
         ); */
 
-        const req = new HttpRequest('PUT', 'https://ng-recipe-book-55fbc.firebaseio.com/recipes.json', this.recipeService.getRecipes(), {
-            reportProgress: true,
-            params: new HttpParams().set('auth', token),
-            responseType: 'json'
-        });
-
+        const req = new HttpRequest('PUT', 'https://ng-recipe-book-55fbc.firebaseio.com/recipes.json', this.recipeService.getRecipes());
         return this.httpService.request(req);
     }
 
     getRecipes() {
-        const token = this.authService.getToken();
-        console.log(token);
         // Here we use the mapper to add an empty ingredients array to a recipe
         // not containing any recipes.
-        return this.httpService.get<Recipe[]>('https://ng-recipe-book-55fbc.firebaseio.com/recipes.json?auth=' + token)
+        return this.httpService.get<Recipe[]>('https://ng-recipe-book-55fbc.firebaseio.com/recipes.json')
             .pipe(map(
                 (recipes) => {
                     for (let recipe of recipes) {
