@@ -28,8 +28,6 @@ export class AuthService {
             .catch(
                 (error: Error) => console.log(error)
             );
-
-            console.log(this.token);
     }
 
     signOutUser() {
