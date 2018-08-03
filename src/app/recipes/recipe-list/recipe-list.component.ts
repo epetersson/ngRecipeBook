@@ -12,7 +12,7 @@ import * as fromRecipe from '../store/recipe.reducers';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit/* , OnDestroy */ {
-  private recipeState: Observable<{recipes: Recipe[]}>;
+  recipeState: Observable<{recipes: Recipe[]}>;
 /*   private recipes: Recipe[];
   private subscription: Subscription; */
 
