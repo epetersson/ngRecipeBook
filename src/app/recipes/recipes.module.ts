@@ -10,6 +10,8 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.component';
 import { CommonModule } from '@angular/common';
 import { RecipesRoutingModule } from './recipes-routing.module';
+import { StoreModule } from '@ngrx/store';
+import { recipeReducer } from './store/recipe.reducers';
 
 @NgModule({
     declarations: [
@@ -24,7 +26,8 @@ import { RecipesRoutingModule } from './recipes-routing.module';
         CommonModule,
         ReactiveFormsModule,
         RecipesRoutingModule,
-        SharedModule
+        SharedModule,
+        StoreModule.forFeature('recipes', recipeReducer) //forFeature is used for lazy loading. Tells RXjs to add this lazy loaded module once it's been included in the application
     ]
 })
 export class RecipesModule {}
