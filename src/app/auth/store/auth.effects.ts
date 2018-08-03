@@ -1,14 +1,16 @@
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import * as AuthActions from './auth.actions';
 import { Effect, Actions } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
+import { fromPromise } from 'rxjs/observable/fromPromise';
+
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/do';
+
+import * as AuthActions from './auth.actions';
 import * as firebase from 'firebase';
-import { fromPromise } from 'rxjs/observable/fromPromise';
 
 @Injectable()
 export class AuthEffects {
