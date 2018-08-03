@@ -1,8 +1,14 @@
-import * as RecipeActions from './recipe.actions';
 import { Recipe } from "../recipe.model";
 import { Ingredient } from "../../shared/ingredient.model";
 
-export interface FeatureState {
+import * as RecipeActions from './recipe.actions';
+import * as fromApp from "../../store/app.reducers";
+
+/* 
+    Extends AppState to get all properties from AppState, so when this module gets 
+    injected it is aware of the appstate as well as the featureState 
+*/
+export interface FeatureState extends fromApp.AppState {
     recipes: State
 }
 

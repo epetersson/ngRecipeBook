@@ -1,4 +1,3 @@
-import * as fromRecipe from '../store/recipe.reducers';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { Recipe } from '../recipe.model';
@@ -6,6 +5,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RecipeService } from '../recipe.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/observable';
+
+import * as fromRecipe from '../store/recipe.reducers';
 
 @Component({
   selector: 'app-recipe-list',
