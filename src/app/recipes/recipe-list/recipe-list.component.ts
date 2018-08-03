@@ -2,7 +2,7 @@ import { Store } from '@ngrx/store';
 import { Recipe } from '../recipe.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs';
 
 import * as fromRecipe from '../store/recipe.reducers';
 

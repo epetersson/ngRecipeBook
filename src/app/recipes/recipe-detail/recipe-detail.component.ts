@@ -2,7 +2,8 @@ import { Recipe } from '../recipe.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 import * as ShoppingListActions from '../../shopping-list/store/shopping-list.actions';
 import * as fromRecipe from '../store/recipe.reducers';
@@ -39,7 +40,7 @@ export class RecipeDetailComponent implements OnInit {
     // Take 1 to only get it once
     // then we get all the recipes
     this.store.select('recipes')
-      .take(1)
+      .pipe(take(1))
       .subscribe((recipeState: fromRecipe.State) => {
           this.store.dispatch(new ShoppingListActions.AddIngredients(recipeState.recipes[this.id].ingredients));
       });
