@@ -1,4 +1,3 @@
-import { RecipeService } from '../recipe.service';
 import { Recipe } from '../recipe.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -19,8 +18,7 @@ export class RecipeDetailComponent implements OnInit {
   recipe: Recipe;
   id: number;
 
-  constructor(private recipeService: RecipeService,
-              private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
               private router: Router,
               private store: Store<fromRecipe.FeatureState>) { }
 

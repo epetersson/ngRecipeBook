@@ -1,8 +1,6 @@
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
 import { Recipe } from '../recipe.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { RecipeService } from '../recipe.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/observable';
 
@@ -19,8 +17,7 @@ export class RecipeListComponent implements OnInit/* , OnDestroy */ {
   private subscription: Subscription; */
 
   // We use the feature state because this is the state of the module as it is lazily loaded
-  constructor(/* private recipeService: RecipeService, */
-              private router: Router,
+  constructor(private router: Router,
               private route: ActivatedRoute,
               private store: Store<fromRecipe.FeatureState>) { }
 
