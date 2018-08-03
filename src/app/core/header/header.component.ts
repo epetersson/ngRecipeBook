@@ -1,3 +1,4 @@
+import { StoreRecipes } from './../../recipes/store/recipe.actions';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/observable';
 import { Store } from '@ngrx/store';
@@ -27,12 +28,13 @@ export class HeaderComponent implements OnInit {
     }
 
     onSaveData() {
-        this.dataStorageService.storeRecipes()
+        /* this.dataStorageService.storeRecipes()
             .subscribe(
                 (response) => {
                     console.log(response);
                 }
-            );
+            ); */
+        this.store.dispatch(new RecipeActions.StoreRecipes());
     }
 
     onFetchData() {
