@@ -1,3 +1,38 @@
+<ng-template #detailsModal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{ (recipeState | async).recipes[id].name }}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <img 
+      [src]="(recipeState | async).recipes[id].imagePath" 
+      alt="{{ (recipeState | async).recipes[id].name }}" 
+      class="img-responsive" 
+      style="width: 100%;">
+    <p>{{ (recipeState | async).recipes[id].description }}</p>
+    <ul class="list-group">
+        <li 
+          class="list-group-item"
+          *ngFor="let ingredient of (recipeState | async).recipes[id].ingredients">
+            {{ ingredient.name }} ({{ ingredient.amount }})
+        </li>
+      </ul>
+    <div class="btn-group"
+      appDropdown>
+      <button class="btn btn-primary dropdown-toggle">Manage Recipe <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a (click)="onAddIngredientsToShoppingList()" style="cursor: pointer;">To shopping list</a></li>
+        <li><a (click)="onEditRecipe()">Edit recipe</a></li>
+        <li><a (click)="onDeleteRecipe()" style="cursor: pointer">Delete recipe</a></li>
+      </ul>
+    </div>
+  </div>
+</ng-template>
+
+
+<!-- 
 <div class="row">
   <div class="col-xs-12">
     <img 
@@ -38,4 +73,4 @@
       </ul>
     </div>
   </div>
-</div>
+</div> -->

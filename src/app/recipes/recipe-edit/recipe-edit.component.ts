@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -18,10 +19,14 @@ export class RecipeEditComponent implements OnInit {
   editMode = false;
   recipeForm: FormGroup;
   recipeState: Observable<fromRecipe.State>;
+  
+  modalRef: BsModalRef;
+  @ViewChild('editModal') modalTemplate: TemplateRef<any>;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
-    private store: Store<fromRecipe.FeatureState>) { }
+    private store: Store<fromRecipe.FeatureState>,
+    private modalService: BsModalService) { }
 
   ngOnInit() {
     // Subscribes to changes in the parameters of this URL
@@ -31,8 +36,12 @@ export class RecipeEditComponent implements OnInit {
           this.id = +params['id'];
           this.editMode = params['id'] != null;
           this.initForm();
+          this.modalRef = this.modalService.show(this.modalTemplate);
         }
       );
+    this.modalService.onHide.subscribe( (reason: string) => {
+      this.router.navigate(['../']); 
+    });
   }
 
   onSubmit() {
@@ -46,6 +55,7 @@ export class RecipeEditComponent implements OnInit {
       // this.recipeService.addRecipe(this.recipeForm.value);
       this.store.dispatch(new RecipeActions.AddRecipe(this.recipeForm.value));
     }
+    this.modalRef.hide();
     this.onCancel();
   }
 
