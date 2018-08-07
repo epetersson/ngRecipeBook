@@ -1,0 +1,9 @@
+.info-div {
+    padding: 10px;
+}
+
+.item-container {
+    position: relative;
+    display: inline-block;
+    padding: 12px;
+}
