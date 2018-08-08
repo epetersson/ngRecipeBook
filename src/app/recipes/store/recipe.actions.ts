@@ -7,6 +7,8 @@ export const UPDATE_RECIPE = "UPDATE_RECIPE";
 export const DELETE_RECIPE = "DELETE_RECIPE";
 export const STORE_RECIPES = "STORE_RECIPES";
 export const FETCH_RECIPES = "FETCH_RECIPES";
+export const FETCH_RECIPES_FROM_API = "FETCH_RECIPES_FROM_API";
+export const STORE_RECIPES_FROM_API = "STORE_RECIPES_FROM_API";
 
 export class SetRecipes implements Action {
     readonly type = SET_RECIPES;
@@ -40,10 +42,23 @@ export class FetchRecipes implements Action {
     readonly type = FETCH_RECIPES;
 }
 
-export type RecipeActions = 
-    SetRecipes |
-    AddRecipe |
-    UpdateRecipe |
-    DeleteRecipe |
-    StoreRecipes |
-    FetchRecipes;
+export class FetchRecipesFromApi implements Action {
+    readonly type = FETCH_RECIPES_FROM_API;
+
+    constructor(public payload: string) {}
+}
+
+export class StoreRecipesFromApi implements Action {
+    readonly type = STORE_RECIPES_FROM_API;
+
+    constructor(public payload: { recipes: Recipe[], searchQuery: string }) {}
+}
+
+export type RecipeActions = SetRecipes 
+    | AddRecipe 
+    | UpdateRecipe 
+    | DeleteRecipe 
+    | StoreRecipes 
+    | FetchRecipes
+    | FetchRecipesFromApi
+    | StoreRecipesFromApi;

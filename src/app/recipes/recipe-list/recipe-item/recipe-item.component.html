@@ -7,13 +7,13 @@
             class="list-group-item clearfix">
             <div>
                     <img 
-                    [src]="recipe.imagePath" 
-                    alt="{{ recipe.name }}" 
+                    [src]="recipe.image" 
+                    alt="{{ recipe.label }}" 
                     class="img-responsive"
-                    style="max-height: 250px;">
+                    style="max-height: 250px; width: 100%;">
             </div>
             <div class="info-div">
-                <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
+                <h4 class="list-group-item-heading">{{ recipe.label }}</h4>
                 <p class="list-group-item-text">{{ recipe.description }}</p>
             </div>
         </a>

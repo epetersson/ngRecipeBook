@@ -1,11 +1,12 @@
-<div class="row">
+<!-- <div class="row">
     <div class="col-xs-12">
         <button (click)="onNewRecipe()"class="btn btn-success">New Recipe</button>
     </div>
 </div>
-<hr>
+<hr> -->
 <div class="container">
     <div class="row">
+        <h4>Showing search result for: {{(recipeState | async).searchQuery}}</h4>
         <app-recipe-item
             *ngFor="let recipeElement of (recipeState | async).recipes; let i = index"
             [recipe]="recipeElement"

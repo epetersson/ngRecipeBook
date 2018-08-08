@@ -9,7 +9,7 @@
           style="cursor: pointer"
           *ngFor="let ingredient of (shoppingListState | async).ingredients; let i = index"
           (click)="onEditItem(i)">
-          {{ ingredient.name }} ({{ ingredient.amount }})
+          {{ ingredient.text }} {{ ingredient.amount ?  (ingredient.amount) : '' }}
         </a>
       </ul>
     </div>

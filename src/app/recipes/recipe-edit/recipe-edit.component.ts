@@ -68,7 +68,7 @@ export class RecipeEditComponent implements OnInit {
     // to formarray, as we know this is its type.
     (<FormArray>this.recipeForm.get('ingredients')).push(
       new FormGroup({
-        'name': new FormControl(null, Validators.required),
+        'text': new FormControl(null, Validators.required),
         'amount': new FormControl(null, [
           Validators.required,
           Validators.pattern(/^[1-9]+[0-9]*$/)
@@ -93,14 +93,14 @@ export class RecipeEditComponent implements OnInit {
         .pipe(take(1))
         .subscribe((recipeState: fromRecipe.State) => {
           const recipe = recipeState.recipes[this.id];
-          recipeName = recipe.name;
-          recipeImagePath = recipe.imagePath;
+          recipeName = recipe.label;
+          recipeImagePath = recipe.image;
           recipeDescription = recipe.description;
           if (recipe['ingredients']) {
             for (let ingredient of recipe.ingredients) {
               recipeIngredients.push(
                 new FormGroup({
-                  'name': new FormControl(ingredient.name, Validators.required),
+                  'text': new FormControl(ingredient.text, Validators.required),
                   'amount': new FormControl(ingredient.amount,
                     [Validators.required,
                     Validators.pattern(/^[1-9]+[0-9]*$/)])
@@ -112,8 +112,8 @@ export class RecipeEditComponent implements OnInit {
     }
 
     this.recipeForm = new FormGroup({
-      'name': new FormControl(recipeName, Validators.required),
-      'imagePath': new FormControl(recipeImagePath, Validators.required),
+      'label': new FormControl(recipeName, Validators.required),
+      'image': new FormControl(recipeImagePath, Validators.required),
       'description': new FormControl(recipeDescription, Validators.required),
       'ingredients': recipeIngredients
     });

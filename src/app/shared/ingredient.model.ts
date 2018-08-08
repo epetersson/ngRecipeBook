@@ -1,5 +1,5 @@
 export class Ingredient {
 
-    constructor(public name: string, public amount: number) {
+    constructor(public text: string, public amount?: number) {
     }
 }

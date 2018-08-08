@@ -1,6 +1,6 @@
 import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from '../shared/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RecipesComponent } from './recipes.component';
@@ -13,6 +13,7 @@ import { RecipesRoutingModule } from './recipes-routing.module';
 import { StoreModule } from '@ngrx/store';
 import { recipeReducer } from './store/recipe.reducers';
 import { RecipeEffects } from './store/recipe.effects';
+import { RecipeSearchComponent } from './recipe-search/recipe-search.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { RecipeEffects } from './store/recipe.effects';
         RecipeListComponent,
         RecipeItemComponent,
         RecipeDetailComponent,
-        RecipeEditComponent
+        RecipeEditComponent,
+        RecipeSearchComponent
     ],
     imports: [
         CommonModule,
@@ -29,7 +31,8 @@ import { RecipeEffects } from './store/recipe.effects';
         RecipesRoutingModule,
         SharedModule,
         StoreModule.forFeature('recipes', recipeReducer), //forFeature is used for lazy loading. Tells RXjs to add this lazy loaded module once it's been included in the application
-        EffectsModule.forFeature([RecipeEffects])
+        EffectsModule.forFeature([RecipeEffects]),
+        FormsModule,
     ]
 })
 export class RecipesModule {}

@@ -2,9 +2,9 @@ import { Ingredient } from '../shared/ingredient.model';
 export class Recipe {
 
     constructor(
-        public name: string,
+        public label: string,
         public description: string,
-        public imagePath: string,
+        public image: string,
         public ingredients: Ingredient[]
     ) {}
 

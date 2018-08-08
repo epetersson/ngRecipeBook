@@ -14,11 +14,12 @@ export interface FeatureState extends fromApp.AppState {
 
 export interface State {
     recipes: Recipe[];
+    searchQuery: string;
 }
 
 const initialState: State = {
     recipes: [
-        new Recipe(
+        /* new Recipe(
             'Flying Jacob',
             'Delicious flying jacob with tender chicken, hot chili sauce and sweet bananas',
             'http://via.placeholder.com/1920x1080',
@@ -77,8 +78,9 @@ const initialState: State = {
                 new Ingredient('Chicken Filét', 10),
                 new Ingredient('Chili Sauce', 2)
             ]
-        )
-    ]
+        ) */
+    ],
+    searchQuery: ""
 };
 
 export function recipeReducer(state = initialState, action: RecipeActions.RecipeActions) {
@@ -112,6 +114,23 @@ export function recipeReducer(state = initialState, action: RecipeActions.Recipe
                 ...state,
                 recipes: recipeListToUpdate
             };
+        case RecipeActions.STORE_RECIPES_FROM_API:
+            const recipeList = [];
+            action.payload.recipes.forEach(apiRecipe => {
+                const recipe = new Recipe(apiRecipe['recipe'].label, '', apiRecipe['recipe'].image, apiRecipe['ingredients']);
+                recipe.ingredients = [];
+                apiRecipe['recipe']['ingredients'].forEach(apiIngredient => {
+                    const ingredient = new Ingredient(apiIngredient.text)
+                    recipe.ingredients.push(ingredient);
+                });                
+                recipeList.push(recipe);
+            });
+            console.log(recipeList);
+            return {
+                ...state,
+                recipes: recipeList,
+                searchQuery: action.payload.searchQuery
+            }
         default:
             return state;
     }

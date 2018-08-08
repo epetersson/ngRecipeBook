@@ -1,14 +1,14 @@
 <ng-template #detailsModal>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">{{ (recipeState | async).recipes[id].name }}</h4>
+    <h4 class="modal-title pull-left">{{ (recipeState | async).recipes[id].label }}</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
       <img 
-      [src]="(recipeState | async).recipes[id].imagePath" 
-      alt="{{ (recipeState | async).recipes[id].name }}" 
+      [src]="(recipeState | async).recipes[id].image" 
+      alt="{{ (recipeState | async).recipes[id].label }}" 
       class="img-responsive" 
       style="width: 100%;">
     <p>{{ (recipeState | async).recipes[id].description }}</p>
@@ -16,7 +16,7 @@
         <li 
           class="list-group-item"
           *ngFor="let ingredient of (recipeState | async).recipes[id].ingredients">
-            {{ ingredient.name }} ({{ ingredient.amount }})
+          {{ ingredient.text }} {{ ingredient.amount ?  (ingredient.amount) : '' }}
         </li>
       </ul>
     <div class="btn-group"

@@ -15,13 +15,21 @@ export class AuthInterceptor implements HttpInterceptor {
 
         // SwitchMap is used because it does not wrap the returned value in a new value,
         // but instead it returns the value directly which is already an Observable
-        return this.store.select('auth')
-            .pipe(
-                take(1),
-                switchMap((authState: fromAuth.State) => {
-                    const clonedReq = req.clone({params: req.params.set('auth', authState.token)});
-                    return next.handle(clonedReq);
-                })
-            );
+        if(req.url == 'https://ng-recipe-book-55fbc.firebaseio.com/recipes.json'){
+            console.log(req);
+            return this.store.select('auth')
+                .pipe(
+                    take(1),
+                    switchMap((authState: fromAuth.State) => {
+                        const clonedReq = req.clone({params: req.params.set('auth', authState.token)});
+                        return next.handle(clonedReq);
+                    })
+                );
+        } else if (req.url == 'https://api.edamam.com/search') {
+            console.log(req);
+            const clonedReq = req.clone({params: req.params.set('app_id', '30acf856').set('app_key', '4510c79c8fab0c81a77ac40fe92fa92f')});
+            console.log(clonedReq);
+            return next.handle(clonedReq);
+        }
     }
 }
